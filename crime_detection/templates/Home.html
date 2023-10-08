@@ -1,64 +1,88 @@
+<!-- Home.html -->
 {% load static %}
 
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Upload and Display Videos</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style1.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/navbar1.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+  </head>
 
-<head>
-    <title>Upload Video</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-</head>
-
-<body>
+  <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <div class="nav">
-            <input type="checkbox" id="nav-check">
-            <div class="nav-header">
-                <div class="nav-title">
-                    Crime-Detection
-                </div>
-            </div>
-            <div class="nav-btn">
-                <label for="nav-check">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-
-            <div class="nav-links">
-                <a href="#" target="_blank">Home</a>
-                <a href="#" target="_blank">About</a>
-                <a href="#" target="_blank">Contact</a>
-                <a href="#" target="_blank">Team</a>
-            </div>
+      <div class="nav">
+        <input type="checkbox" id="nav-check" />
+        <div class="nav-header">
+          <div class="nav-title">Crime-Detection</div>
         </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav-links">
+          <a href="#" target="_blank">Home</a>
+          <a href="#" target="_blank">About</a>
+          <a href="#" target="_blank">Contact</a>
+          <a href="#" target="_blank">Team</a>
+        </div>
+      </div>
     </nav>
     <div class="file-upload">
-        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add
-            Video</button>
-
+      <!-- Video Upload Form -->
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button
+          class="file-upload-btn"
+          type="button"
+          onclick="$('.file-upload-input').trigger('click')"
+        >
+          Add Video
+        </button>
         <div class="image-upload-wrap">
-            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="video/*" />
-            <div class="drag-text">
-                <h3>Drag and drop a file or select add Video</h3>
-            </div>
+          <input
+            class="file-upload-input"
+            type="file"
+            name="video_file"
+            onchange="readURL(this);"
+            accept="video/*"
+          />
+          <div class="drag-text">
+            <h3>Drag and drop a file or select add Video</h3>
+          </div>
         </div>
         <div class="file-upload-content">
-            <video class="file-upload-video" controls>
-                <source src="#" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="image-title-wrap">
-                <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
-                        class="image-title">Uploaded Video</span></button>
-            </div>
+          <video class="file-upload-video" controls>
+            <source src="#" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="image-title-wrap">
+            <button type="submit" class="submit-image">Upload Video</button>
+          </div>
         </div>
+      </form>
     </div>
-</body>
-<script src="{% static 'js/script.js' %}"></script>
-<script src="{% static 'js/navbar.js' %}"></script>
-<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
+  </body>
+  <script src="{% static 'js/script1.js' %}"></script>
+  <script src="{% static 'js/navbar.js' %}"></script>
+  <script
+    class="jsbin"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+  ></script>
 </html>

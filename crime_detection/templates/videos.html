@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Uploaded Videos</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style_videos.css' %}"
+    />
+    <!-- Link to the new CSS file -->
+
+    <!-- Link to the new JavaScript file -->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+      <!-- Your navigation code goes here -->
+    </nav>
+    <div class="videos-container">
+      <h2>Uploaded Videos</h2>
+
+      <!-- Search Filter -->
+      <input type="text" id="videoSearch" placeholder="Search videos" />
+
+      <ul>
+        {% for video in videos %}
+        <li class="video-box">
+          <video class="video-player" controls>
+            <source src="{{ video.video_file.url }}" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p><strong>{{ video.video_file.name|truncatechars:20 }}</strong></p>
+          <!-- Display the name of the video file (truncate to 20 characters) -->
+        </li>
+        {% empty %}
+        <li>No videos available.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+  <script src="{% static 'js/video_filter.js' %}"></script>
+</html>

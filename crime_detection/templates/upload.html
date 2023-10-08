@@ -1,0 +1,9 @@
+<!-- upload.html -->
+{% extends "home.html" %} {% block content %}
+<div class="file-upload">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Upload Video</button>
+  </form>
+</div>
+{% endblock %}

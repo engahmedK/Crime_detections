@@ -2,6 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    # Use the root URL for video uploads
+    path('', views.upload_view, name='upload'),
+    # URL for displaying uploaded videos
+    path('videos/', views.videos_view, name='videos'),
+
 ]
-# <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
